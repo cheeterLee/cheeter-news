@@ -21,11 +21,11 @@ const fetchNews = async (
                 keywords: $keywords
             ) {
 				data {
-					category
 					author
-					country
-					description
+					category
 					image
+					description
+					country
 					language
 					published_at
 					source
@@ -54,7 +54,7 @@ const fetchNews = async (
         body: JSON.stringify({
             query,
             variables: {
-                accesss_key: process.env.MEDIASTACK_API_KEY,
+                access_key: process.env.MEDIASTACK_API_KEY,
                 categories: category,
                 keywords: keywords,
             },
@@ -68,10 +68,10 @@ const fetchNews = async (
     
 
 	// Sort function
-    // const news = sortNewsByDefault(newsResponse)
+    const news = sortNewsByDefault(newsResponse.data.myQuery)
 
 	// return res
-    return newsResponse
+    return news
 }
 
 export default fetchNews
